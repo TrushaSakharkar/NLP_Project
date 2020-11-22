@@ -128,31 +128,31 @@ def main():
     #                     printHelp()
     #                     sys.exit()
         
-    if(True):
-        # There is no config file. Look for inputs in parameters
-        try:
-            referencefile
-        except NameError:
-            referencefile = False
-        try:
-            inputfile
-        except NameError:
-            print ('Provide an input file!\n')
-            printHelp()
-            sys.exit()
-        try:
-            from_system
-        except NameError:
-            from_system = 'NeuralMonkey'
-        try:
-            num
-        except NameError:
-            num = -1
-        try:
-            outputType
-        except NameError:
-            # Set output type to 'web' by default
-            outputType = 'web'
+# if(True):
+    # There is no config file. Look for inputs in parameters
+    try:
+        referencefile
+    except NameError:
+        referencefile = False
+    try:
+        inputfile
+    except NameError:
+        print ('Provide an input file!\n')
+        printHelp()
+        sys.exit()
+    try:
+        from_system
+    except NameError:
+        from_system = 'NeuralMonkey'
+    try:
+        num
+    except NameError:
+        num = -1
+    try:
+        outputType
+    except NameError:
+        # Set output type to 'web' by default
+        outputType = 'web'
         # if from_system == 'NeuralMonkey' or from_system == 'Marian':
         #     try:
         #         sourcefile
@@ -259,6 +259,7 @@ def main():
     processAlignments(data, folder, inputfile, outputType, num, refs)
             
     # Get rid of some junk
+    print(foldername)
     if outputType == 'web' or outputType == 'compare':
         webbrowser.open("http://127.0.0.1:47155/?directory=" + foldername)
         os.system("php -S 127.0.0.1:47155 -t web")
