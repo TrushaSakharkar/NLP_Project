@@ -227,10 +227,10 @@ def main():
     foldername = ntpath.basename(inputfile).replace(".","") + "_" + strftime("%d%m_%H%M", gmtime())
     # if outputType == 'compare':
     #     foldername = 'cmp_' + foldername
-    # if outputType == 'web' or outputType == 'compare':
-    #     folder = './web/data/' + foldername
-    # else:
-    folder = tempfile.mkdtemp()
+    if outputType == 'web' or outputType == 'compare':
+        folder = './web/data/' + foldername
+    else:
+        folder = tempfile.mkdtemp()
 
     try:
         os.stat(folder)
