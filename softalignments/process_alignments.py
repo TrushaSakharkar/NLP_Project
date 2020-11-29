@@ -32,8 +32,8 @@ def main():
             sourcefile = arg
         elif opt == '-t':
             targetfile = arg
-        elif opt == '-f':
-            from_system = arg
+        # elif opt == '-f':
+        #     from_system = arg
         elif opt == '-n':
             num = arg
         elif opt == '-v':
@@ -50,7 +50,8 @@ def main():
             referencefile = arg
         elif opt == '-d':
             de_bpe = True
-    
+            
+    from_system = "Nematus"
     try:
         config_file
     except NameError:
@@ -140,10 +141,7 @@ def main():
         print ('Provide an input file!\n')
         printHelp()
         sys.exit()
-    try:
-        from_system
-    except NameError:
-        from_system = 'NeuralMonkey'
+   
     try:
         num
     except NameError:
@@ -201,8 +199,7 @@ def main():
     #     srcs = readSnts(sourcefile)
     #     tgts = readSnts(targetfile)
     #     alis = np.load(inputfile)
-    if from_system == "Nematus":
-        (srcs, tgts, alis) = readNematus(inputfile, from_system, de_bpe)
+    (srcs, tgts, alis) = readNematus(inputfile, from_system, de_bpe)
     
     data = list(zip(srcs, tgts, alis))
     
