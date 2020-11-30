@@ -116,7 +116,7 @@ def deBPE(srcs, tgts, ali, sources, targets):
     
     return srcs, tgts, ali
 
-def readNematus(filename, from_system = "Nematus", de_bpe = False):
+def readNematus(filename, de_bpe = False):
     with open(filename, 'r', encoding='utf-8') as fh:
         alis = []
         tgts = []
@@ -137,14 +137,12 @@ def readNematus(filename, from_system = "Nematus", de_bpe = False):
                         targets = escape(lineparts[1]).strip().split()
                         (srcs, tgts, ali) = deBPE(srcs, tgts, ali, sources, targets)
                         
-                    if from_system == "Nematus":
-                        ali = ali.transpose()
+                    ali = ali.transpose()
                     alis.append(ali)
                     aliTXT = ''
                 lineparts = line.split(' ||| ')
-                if from_system == "Nematus":
-                    lineparts[1] += ' <EOS>'
-                    lineparts[3] += ' <EOS>'
+                lineparts[1] += ' <EOS>'
+                lineparts[3] += ' <EOS>'
                 tgts.append(escape(lineparts[1]).strip().split())
                 srcs.append(escape(lineparts[3]).strip().split())
                 wasNew = False
@@ -162,61 +160,13 @@ def readNematus(filename, from_system = "Nematus", de_bpe = False):
                 sources = escape(lineparts[3]).strip().split()
                 targets = escape(lineparts[1]).strip().split()
                 (srcs, tgts, ali) = deBPE(srcs, tgts, ali, sources, targets)
-            if from_system == "Nematus":
-                ali = ali.transpose()
+            ali = ali.transpose()
             alis.append(ali)
             aliTXT = ''
     return srcs, tgts, alis
     
 def escape(string):
     return string.replace('"','&quot;').replace("'","&apos;")
-    
-# def readAmu(in_file, src_file):
-#     with open(src_file, 'r', encoding='utf-8') as fi:
-#         with open(in_file, 'r', encoding='utf-8') as fh:
-#             alis = []
-#             tgts = []
-#             srcs = []
-#             aliTXT = ''
-#             for src_line, out_line in izip(fi, fh):
-#                 lineparts = out_line.split(' ||| ')
-#                 src_line = src_line.strip() + ' <EOS>'
-#                 tgts.append(escape(lineparts[0]).strip().split())
-#                 srcs.append(escape(src_line).split())
-#                 #alignment weights
-#                 weightparts = lineparts[1].split(' ')
-#                 for weightpart in weightparts:
-#                     aliTXT += weightpart.replace(',',' ') + '\n'
-#                 if len(aliTXT) > 0:
-#                     c = StringIO(aliTXT)
-#                     ali = np.loadtxt(c)
-#                     ali = ali.transpose()
-#                     alis.append(ali)
-#                     aliTXT = ''
-#     return srcs, tgts, alis
-    
-# def compare(srcs1, srcs2):
-#     for i in range(0, len(srcs1)):
-#         if srcs1[i][len(srcs1[i])-1] != '<EOS>':
-#             srcs1[i].append('<EOS>')
-#         if srcs2[i][len(srcs2[i])-1] != '<EOS>':
-#             srcs2[i].append('<EOS>')
-#     return srcs1==srcs2
-    
-# def synchData(data1,data2):
-#     addEOS1 = False
-#     addEOS2 = False
-#     for i in range(0, len(data1)):
-#         diff1 = len(data1[i][1]) - len(data2[i][1])
-#         diff2 = len(data2[i][1]) - len(data1[i][1])
-        
-#         if(diff1 > 0):
-#             for j in range(0, diff1):
-#                 data2[i][1].append(u'')
-#         if(diff2 > 0):
-#             for j in range(0, diff2):
-#                 data1[i][1].append(u'')
-#     return data1, data2
     
 def longestCommonSubstring(s1, s2):
     m = [[0] * (1 + len(s2)) for i in range(1 + len(s1))]

@@ -41,12 +41,6 @@ Requirements
 
 * PHP 5.4 or newer (for web visualization)
 
-How to get new alignment
----------
-
-	
-		
-	
 Examples
 ---------
 

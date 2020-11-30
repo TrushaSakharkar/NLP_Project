@@ -1,11 +1,8 @@
 <?php 
-// Report simple running errors
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 header('Content-Type: text/html; charset=utf-8');
 include('functions.php');
 
-// Get a list of directories in ./data
-// And remove first two (. and ..)
 foreach(glob('./data/*', GLOB_ONLYDIR) as $dir) {
     $dataDirs[] = basename($dir);
 }

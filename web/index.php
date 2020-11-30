@@ -103,19 +103,7 @@ if($sentence > $count) $sentence = $count;
 					'); ?>
                 </div>
 				<input class="form-control" style="width:75px; display:inline;" name="s" id="sentenceNum" value="<?php echo $sentence; ?>" type="text" /> 
-                <!-- <div class="btn-group" role="group">
-                    <button style="display:inline;" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                    </button>
-					<?php echo (!$compare?'
-                    <a type="reset" id="save" style="display:inline;" class="btn btn-default">
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
-                    </a>
-				  ':'
-                    <button type="reset" style="display:inline;" class="btn btn-default" onclick="toggle(\'#other\')">
-                        <span id="toggleother" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                    </button>'); ?>
-                </div> -->
+
 				<input type="hidden" name="directory" value="<?php echo $dataDir; ?>" />
 				<input type="hidden" name="changeNum" value="True" />
 			</form>
@@ -126,15 +114,6 @@ if($sentence > $count) $sentence = $count;
 			</a>
 		</li>
       </ul>
-      <!-- <ul class="nav navbar-nav navbar-right">
-        <li style="padding-top:8px; padding-right:5px;">
-			<form action="?">
-				<select class="selectpicker" data-live-search="true" name="directory" onchange="setCookie('sortBy', '', 1);setCookie('sortOrder', '', 1);this.form.submit()">
-			
-				</select>
-			</form>
-        </li>
-      </ul> -->
     </div>
   </div>
 </nav>

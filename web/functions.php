@@ -63,14 +63,16 @@ function printRow($name, $rowId, $sortId, $dataId, $dataDir, $allConfidences, $c
         <span class="glyphicon glyphicon-repeat sort" style="margin-top:40px;" onclick="sortAll(1)"></span>
         <div id="'.$name.'" style="margin-left:20px;width:'.(count($allConfidences)*7).'px;">';
                 foreach($allConfidences as $key => $scfd){
-                    $textNum = $name == "length" ? $scfd[5] : $scfd[$dataId];
+					$textNum = $name == "length" ? $scfd[5] : $scfd[$dataId];
+					if ($name=="confidence"){
                     echo '<a id="'.$idOne.'-'.($key+1).'-'.implode("-",$scfd).'" ';
                     echo 'href="?directory='.$dataDir.'&s='.($key+1).'" title="Sentence '.($key+1).' - '.$textOne.' '.$textNum.$textTwo.'">';
                     echo '<div class="progress progress-bar-vertical">';
                     echo '<div id="'.$idTwo.'-'.($key+1).'" class="progress-bar progress-bar-'.$color.'" role="progressbar" aria-valuenow="'.$scfd[$dataId].'" ';
                     echo 'aria-valuemin="0" aria-valuemax="100" style="height: '.$scfd[$dataId].'%;">';
-                    echo '<span class="sr-only">'.$scfd[$dataId].'%</span>';
+					echo '<span class="sr-only">'.$scfd[$dataId].'%</span>';
                     echo '</div></div></a>';
+					}
                 }
         echo'</div></div>';
 }
@@ -78,8 +80,6 @@ function printRow($name, $rowId, $sortId, $dataId, $dataDir, $allConfidences, $c
 function printChart($name, $value, $color, $sortableId, $size = "col-xs-12 col-sm-6 col-md-3 col-lg-3"){
 	echo '<div class="'.$size.'">';
     echo '<span data-toggle="collapse" data-target="#'.$sortableId.'" class="label label-default myLabel" onclick="toggleChart(\''.$sortableId.'\')">'.$name.'</span> ';
-    // echo '<div class="progress pr" >';
-    // echo '<div class="progress-bar progress-bar-'.$color.'" role="progressbar" aria-valuenow="'.$value.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$value.'%;">';
     echo $value.'%</div></div></div>';
 }
 
@@ -99,13 +99,11 @@ function getLongestCommonSubsequence($string_1, $string_2){
 	
 	if ($string_1_length === 0 || $string_2_length === 0)
 	{
-		// No similarities
 		return $return;
 	}
 	
 	$longest_common_subsequence = array();
 	
-	// Initialize the CSL array to assume there are no similarities
 	$longest_common_subsequence = array_fill(0, $string_1_length, array_fill(0, $string_2_length, 0));
 	
 	$largest_size = 0;
@@ -114,46 +112,33 @@ function getLongestCommonSubsequence($string_1, $string_2){
 	{
 		for ($j = 0; $j < $string_2_length; $j++)
 		{
-			// Check every combination of characters
 			if ($string_1[$i] === $string_2[$j])
 			{
-				// These are the same in both strings
 				if ($i === 0 || $j === 0)
 				{
-					// It's the first character, so it's clearly only 1 character long
 					$longest_common_subsequence[$i][$j] = 1;
 				}
 				else
 				{
-					// It's one character longer than the string from the previous character
 					$longest_common_subsequence[$i][$j] = $longest_common_subsequence[$i - 1][$j - 1] + 1;
 				}
 				
 				if ($longest_common_subsequence[$i][$j] > $largest_size)
 				{
-					// Remember this as the largest
 					$largest_size = $longest_common_subsequence[$i][$j];
-					// Wipe any previous results
 					$return       = '';
-					// And then fall through to remember this new value
 				}
 				
 				if ($longest_common_subsequence[$i][$j] === $largest_size)
 				{
-					// Remember the largest string(s)
 					$return = substr($string_1, $i - $largest_size + 1, $largest_size);
 				}
 			}
-			// Else, $CSL should be set to 0, which it was already initialized to
 		}
 	}
 	
-	// Return the list of matches
 	return $return;
 }
-
-
-
 function format_sentencepiece($myString){
 	$myStringParts = explode("</span> <span", $myString);
 	$partCount = count($myStringParts)-1;

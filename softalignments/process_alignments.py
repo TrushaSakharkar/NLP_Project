@@ -28,85 +28,12 @@ def main():
             inputfile = arg
         elif opt == '-o':
             outputType = arg
-      
-            
-    from_system = "Nematus"
    
     try:
         de_bpe
     except NameError:
         de_bpe = False
     
-    # if(config_file):
-    #     # There is a config file! Get info about inputs
-    #     config = cp.ConfigParser()
-    #     config.read(config_file)
-    #     try:
-    #         referencefile = config.get('AlignmentsOne', 'ReferenceFile')
-    #     except (cp.NoOptionError, cp.NoSectionError):
-    #         referencefile = False
-    #     try:
-    #         inputfile = config.get('AlignmentsOne', 'InputFile')
-    #     except NameError:
-    #         print ('Provide an input file!\n')
-    #         printHelp()
-    #         sys.exit()
-    #     try:
-    #         from_system = config.get('AlignmentsOne', 'From')
-    #     except cp.NoOptionError:
-    #         from_system = 'NeuralMonkey'
-    #     try:
-    #         num = config.getint('Options', 'Number')
-    #     except (cp.NoOptionError, cp.NoSectionError):
-    #         num = -1
-    #     try:
-    #         outputType = config.get('Options', 'OutputType')
-    #     except (cp.NoOptionError, cp.NoSectionError):
-    #         # Set output type to 'web' by default
-    #         outputType = 'web'
-        
-    #     if from_system == 'NeuralMonkey' or from_system == 'Marian':
-    #         try:
-    #             sourcefile = config.get('AlignmentsOne', 'SourceFile')
-    #         except cp.NoOptionError:
-    #             print ('Provide a source sentence file!\n')
-    #             printHelp()
-    #             sys.exit()
-    #         if from_system == 'NeuralMonkey':
-    #             try:
-    #                 targetfile = config.get('AlignmentsOne', 'TargetFile')
-    #             except cp.NoOptionError:
-    #                 print ('Provide a target sentence file!\n')
-    #                 printHelp()
-    #                 sys.exit()
-    #     if outputType == 'compare':
-    #         try:
-    #             from_system2 = config.get('AlignmentsTwo', 'From')
-    #         except cp.NoOptionError:
-    #             from_system2 = 'NeuralMonkey'
-    #         try:
-    #             inputfile2 = config.get('AlignmentsTwo', 'InputFile')
-    #         except cp.NoOptionError:
-    #             print ('Provide a input file for the second system!\n')
-    #             printHelp()
-    #             sys.exit()
-    #         if from_system2 == 'NeuralMonkey' or from_system2 == 'Marian':
-    #             try:
-    #                 sourcefile2 = config.get('AlignmentsTwo', 'SourceFile')
-    #             except cp.NoOptionError:
-    #                 print ('Provide a source sentence file for the second system!\n')
-    #                 printHelp()
-    #                 sys.exit()
-    #             if from_system2 == 'NeuralMonkey':
-    #                 try:
-    #                     targetfile2 = config.get('AlignmentsTwo', 'TargetFile')
-    #                 except cp.NoOptionError:
-    #                     print ('Provide a target sentence file for the second system!\n')
-    #                     printHelp()
-    #                     sys.exit()
-        
-# if(True):
-    # There is no config file. Look for inputs in parameters
     try:
         referencefile
     except NameError:
@@ -125,82 +52,13 @@ def main():
     try:
         outputType
     except NameError:
-        # Set output type to 'web' by default
         outputType = 'web'
-        # if from_system == 'NeuralMonkey' or from_system == 'Marian':
-        #     try:
-        #         sourcefile
-        #     except NameError:
-        #         print ('Provide a source sentence file!\n')
-        #         printHelp()
-        #         sys.exit()
-        #     if from_system == 'NeuralMonkey':
-        #         try:
-        #             targetfile
-        #         except NameError:
-        #             print ('Provide a target sentence file!\n')
-        #             printHelp()
-        #             sys.exit()
-        # if outputType == 'compare':
-        #     try:
-        #         from_system2
-        #     except NameError:
-        #         from_system2 = 'NeuralMonkey'
-        #     try:
-        #         inputfile2
-        #     except NameError:
-        #         print ('Provide a input file for the second system!\n')
-        #         printHelp()
-        #         sys.exit()
-        #     if from_system2 == 'NeuralMonkey' or from_system2 == 'Marian':
-        #         try:
-        #             sourcefile2
-        #         except NameError:
-        #             print ('Provide a source sentence file for the second system!\n')
-        #             printHelp()
-        #             sys.exit()
-        #         if from_system2 == 'NeuralMonkey':
-        #             try:
-        #                 targetfile2
-        #             except NameError:
-        #                 print ('Provide a target sentence file for the second system!\n')
-        #                 printHelp()
-        #                 sys.exit()
-    
-    # if outputType != 'color' and outputType != 'block' and outputType != 'block2' and outputType != 'compare':
-    #     # Set output type to 'web' by default
-    #     outputType = 'web'
-
-    # if from_system == "NeuralMonkey":
-    #     srcs = readSnts(sourcefile)
-    #     tgts = readSnts(targetfile)
-    #     alis = np.load(inputfile)
-    (srcs, tgts, alis) = readNematus(inputfile, from_system, de_bpe)
+    (srcs, tgts, alis) = readNematus(inputfile, de_bpe)
     
     data = list(zip(srcs, tgts, alis))
     
-    # if outputType == 'compare':
-    #     if from_system2 == "NeuralMonkey":
-    #         srcs2 = readSnts(sourcefile2)
-    #         tgts2 = readSnts(targetfile2)
-    #         alis2 = np.load(inputfile2)
-    #     if from_system2 == "Nematus" or from_system2 == "Sockeye":
-    #         (srcs2, tgts2, alis2) = readNematus(inputfile2, from_system2, de_bpe)
-    #     if from_system2 == "OpenNMT":
-    #         (srcs2, tgts2, alis2) = readNematus(inputfile2, from_system2, de_bpe)
-    #     if from_system2 == "Marian":
-    #         (srcs2, tgts2, alis2) = readAmu(inputfile2, sourcefile2)
-    #     data2 = list(zip(srcs2, tgts2, alis2))
-        
-    #     if compare(srcs, srcs2) == False:
-    #         print ('Source sentences from both systems need to be identical!\n')
-    #         printHelp()
-    #         sys.exit()
-
     foldername = ntpath.basename(inputfile).replace(".","") + "_" + strftime("%d%m_%H%M", gmtime())
-    # if outputType == 'compare':
-    #     foldername = 'cmp_' + foldername
-    if outputType == 'web' or outputType == 'compare':
+    if outputType == 'web':
         folder = './web/data/' + foldername
     else:
         folder = tempfile.mkdtemp()
@@ -216,23 +74,9 @@ def main():
     else:
         refs = False
     
-    # if outputType == 'compare':
-    #     try:
-    #         os.stat(folder + '/NMT1')
-    #     except:
-    #         os.mkdir(folder + '/NMT1')
-    #     try:
-    #         os.stat(folder + '/NMT2')
-    #     except:
-    #         os.mkdir(folder + '/NMT2')
-    #     synchData(data,data2)
-    #     processAlignments(data, folder + '/NMT1', inputfile, outputType, num, refs)
-    #     processAlignments(data2, folder + '/NMT2', inputfile2, outputType, num, refs)
-    # else:
     processAlignments(data, folder, inputfile, outputType, num, refs)
             
-    # Get rid of some junk
-    if outputType == 'web' or outputType == 'compare':
+    if outputType == 'web':
         webbrowser.open("http://127.0.0.1:47155/?directory=" + foldername)
         os.system("php -S 127.0.0.1:47155 -t web")
     else:
