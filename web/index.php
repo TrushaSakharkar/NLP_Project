@@ -66,7 +66,6 @@ if($sentence > $count) $sentence = $count;
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -77,7 +76,6 @@ if($sentence > $count) $sentence = $count;
       <a class="navbar-brand" href="#"><?php echo ($compare?"Compare ":""); ?>NMT Attention Alignments </a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-center">
 		<li>
@@ -105,7 +103,7 @@ if($sentence > $count) $sentence = $count;
 					'); ?>
                 </div>
 				<input class="form-control" style="width:75px; display:inline;" name="s" id="sentenceNum" value="<?php echo $sentence; ?>" type="text" /> 
-                <div class="btn-group" role="group">
+                <!-- <div class="btn-group" role="group">
                     <button style="display:inline;" class="btn btn-default" type="submit">
                         <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
                     </button>
@@ -117,7 +115,7 @@ if($sentence > $count) $sentence = $count;
                     <button type="reset" style="display:inline;" class="btn btn-default" onclick="toggle(\'#other\')">
                         <span id="toggleother" class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                     </button>'); ?>
-                </div>
+                </div> -->
 				<input type="hidden" name="directory" value="<?php echo $dataDir; ?>" />
 				<input type="hidden" name="changeNum" value="True" />
 			</form>
@@ -128,20 +126,15 @@ if($sentence > $count) $sentence = $count;
 			</a>
 		</li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <!-- <ul class="nav navbar-nav navbar-right">
         <li style="padding-top:8px; padding-right:5px;">
 			<form action="?">
 				<select class="selectpicker" data-live-search="true" name="directory" onchange="setCookie('sortBy', '', 1);setCookie('sortOrder', '', 1);this.form.submit()">
-				<?php 
-				foreach($dataDirs as $directory){
-					$selected = $dataDir==$directory?" SELECTED":"";
-					echo "<option value='$directory'$selected>$directory</option>";
-				}
-				?>
+			
 				</select>
 			</form>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </nav>
@@ -151,13 +144,14 @@ if($sentence > $count) $sentence = $count;
 	</div>
 <div class="row" style="margin-left:5px;" id="topRow">
 </div>
+<div class="row<?php echo ($compare?" bottomRow":""); ?>" style="margin-left:5px;" id="bottomRow">
+</div>
 <div class="row">
 	<div id="svg"></div>
 	<div id="other"></div>
     <div id="matrix" style="white-space: nowrap;"></div>
 </div>
-<div class="row<?php echo ($compare?" bottomRow":""); ?>" style="margin-left:5px;" id="bottomRow">
-</div>
+
 <div class="row<?php echo ($compare?" bottomRow2":""); ?>" style="margin-left:5px;" id="bottomRow2">
 </div>
 <?php

@@ -28,34 +28,34 @@ def main():
             inputfile = arg
         elif opt == '-o':
             outputType = arg
-        elif opt == '-s':
-            sourcefile = arg
-        elif opt == '-t':
-            targetfile = arg
+        # elif opt == '-s':
+            # sourcefile = arg
+        # elif opt == '-t':
+            # targetfile = arg
         # elif opt == '-f':
         #     from_system = arg
-        elif opt == '-n':
-            num = arg
-        elif opt == '-v':
-            from_system2 = arg
-        elif opt == '-w':
-            inputfile2 = arg
-        elif opt == '-x':
-            sourcefile2 = arg
-        elif opt == '-y':
-            targetfile2 = arg
-        elif opt == '-c':
-            config_file = arg
-        elif opt == '-r':
-            referencefile = arg
-        elif opt == '-d':
-            de_bpe = True
+        # elif opt == '-n':
+            # num = arg
+        # elif opt == '-v':
+            # from_system2 = arg
+        # elif opt == '-w':
+            # inputfile2 = arg
+        # elif opt == '-x':
+        #     sourcefile2 = arg
+        # elif opt == '-y':
+        #     targetfile2 = arg
+        # elif opt == '-c':
+        #     config_file = arg
+        # elif opt == '-r':
+        #     referencefile = arg
+        # elif opt == '-d':
+        #     de_bpe = True
             
     from_system = "Nematus"
-    try:
-        config_file
-    except NameError:
-        config_file = False
+    # try:
+        # config_file
+    # except NameError:
+        # config_file = False
     try:
         de_bpe
     except NameError:
@@ -256,7 +256,6 @@ def main():
     processAlignments(data, folder, inputfile, outputType, num, refs)
             
     # Get rid of some junk
-    print(foldername)
     if outputType == 'web' or outputType == 'compare':
         webbrowser.open("http://127.0.0.1:47155/?directory=" + foldername)
         os.system("php -S 127.0.0.1:47155 -t web")
