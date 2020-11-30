@@ -433,7 +433,7 @@ def processAlignments(data, folder, inputfile, outputType, num, refs=False):
                                 if len(occupied_to) <= emptyline:
                                     occupied_to.append(xpos+twlen+1)
                                 else:
-                                    occupied_to[emptyline]=xpos+twlen+1;
+                                    occupied_to[emptyline]=xpos+twlen+1
                                 tw+=1
 
                             #print 2d array

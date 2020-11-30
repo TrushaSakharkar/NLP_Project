@@ -132,10 +132,3 @@ printChart("Confidence", $confidence, "default", "sortable-1");
 printChart("CDP", $CDP, "default", "sortable-2");
 printChart("APout", $APout, "default", "sortable-3");
 printChart("APin", $APin, "default", "sortable-4");
-
-if($BLEU > 0){
-    printChart("Overlap", $similarity, "default", "sortable-7", "col-xs-12 col-sm-6 col-md-6 col-lg-6");
-    printChart("BLEU", $BLEU, "default", "sortable-6", "col-xs-12 col-sm-6 col-md-6 col-lg-6");
-}else{
-    printChart("Overlap", $similarity, "default", "sortable-7", "col-xs-12 col-sm-12 col-md-12 col-lg-12");
-}

@@ -28,34 +28,10 @@ def main():
             inputfile = arg
         elif opt == '-o':
             outputType = arg
-        # elif opt == '-s':
-            # sourcefile = arg
-        # elif opt == '-t':
-            # targetfile = arg
-        # elif opt == '-f':
-        #     from_system = arg
-        # elif opt == '-n':
-            # num = arg
-        # elif opt == '-v':
-            # from_system2 = arg
-        # elif opt == '-w':
-            # inputfile2 = arg
-        # elif opt == '-x':
-        #     sourcefile2 = arg
-        # elif opt == '-y':
-        #     targetfile2 = arg
-        # elif opt == '-c':
-        #     config_file = arg
-        # elif opt == '-r':
-        #     referencefile = arg
-        # elif opt == '-d':
-        #     de_bpe = True
+      
             
     from_system = "Nematus"
-    # try:
-        # config_file
-    # except NameError:
-        # config_file = False
+   
     try:
         de_bpe
     except NameError:
