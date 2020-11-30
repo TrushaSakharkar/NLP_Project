@@ -68,5 +68,6 @@ Color, Block, Block2
 Web
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/webAlignments.PNG?raw=true)
 
+
 Compare
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/webCompare.png?raw=true)
