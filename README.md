@@ -1,6 +1,15 @@
 # NMT Attention Alignment Visualizations
 An attention alignment visualization tool for command line and web. 
 
+Model Checkpoints
+https://drive.google.com/drive/folders/1wKR1BmSPeJJ567Qqroj72wLI6b5l1qtw?usp=sharing
+
+Model SourceCode
+https://colab.research.google.com/drive/1Sqlz1pHrNodGe8IkejAXtL8G3uba06e_?usp=sharing
+
+Data set link
+https://drive.google.com/drive/folders/1FBOZ6rXCeI6EVxC76Cj_B8Q3aOGd8lO4?usp=sharing
+
 Usage
 ---------
 
