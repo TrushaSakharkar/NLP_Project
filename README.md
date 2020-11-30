@@ -60,16 +60,16 @@ Examples
 	python3 softalignments/process_alignments.py -i input/alignments.txt -o web
 	```
 
-<!-- Screenshots
+Screenshots
 ---------
 Color, Block, Block2  
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/colorAlignments.PNG?raw=true) ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/blockAlignments.PNG?raw=true) ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/block2.png?raw=true) 
 
 Web
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/webAlignments.PNG?raw=true)
-https://github.com/TrushaSakharkar/NLP_Project/blob/master/img/edge.png
+![N|Solid](https://github.com/TrushaSakharkar/NLP_Project/blob/master/img/edge.png)
 
 
 Compare
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/webCompare.png?raw=true)
- -->
+
