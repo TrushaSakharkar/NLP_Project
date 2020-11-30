@@ -10,6 +10,9 @@ https://colab.research.google.com/drive/1Sqlz1pHrNodGe8IkejAXtL8G3uba06e_?usp=sh
 Data set link
 https://drive.google.com/drive/folders/1FBOZ6rXCeI6EVxC76Cj_B8Q3aOGd8lO4?usp=sharing
 
+github repo link
+https://github.com/TrushaSakharkar/NLP_Project
+
 Usage
 ---------
 
