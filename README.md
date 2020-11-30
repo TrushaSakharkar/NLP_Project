@@ -67,6 +67,7 @@ Color, Block, Block2
 
 Web
 ![N|Solid](https://github.com/M4t1ss/sAliViz/blob/master/assets/Screenshots/webAlignments.PNG?raw=true)
+https://github.com/TrushaSakharkar/NLP_Project/blob/master/img/edge.png
 
 
 Compare
